@@ -1,0 +1,27 @@
+{
+  "name": "gpt4-bot",
+  "version": "1.0.0",
+  "description": "Test bot for the new GPT-4 engine",
+  "main": "src/app.ts",
+  "scripts": {
+    "test": "test",
+    "build": "source ./.env && npx prettier --write . && npx tsc",
+    "build:dev": "npx tsc"
+  },
+  "engines": {
+    "node": ">=18 <19"
+  },
+  "author": "Grant Dickie",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^19.0.11",
+    "openai": "^3.2.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.2",
+    "@types/yargs": "^17.0.24",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
+  }
+}
