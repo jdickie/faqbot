@@ -4,3 +4,6 @@
 # ts/js
 node_modules
 dist
+
+# Training sets
+training*

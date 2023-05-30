@@ -6,8 +6,8 @@ import {
   CreateCompletionRequest,
   CreateCompletionResponse,
   OpenAIApi,
-} from "openai";
-import CHATGPT from "../constants/chatgpt";
+} from 'openai';
+import CHATGPT from '../constants/chatgpt';
 
 export class ChatGPTClient {
   chatClient: OpenAIApi;
@@ -28,27 +28,27 @@ export class ChatGPTClient {
     try {
       const completion: CreateChatCompletionResponse | any =
         await this.chatClient.createChatCompletion({
-          model: "gpt-3.5-turbo",
+          model: 'gpt-3.5-turbo',
           messages: [{ role: role, content: text }],
           temperature: CHATGPT.CHAT_MODEL_TEMPERATURE,
           n: this.numCompletions,
         });
       if (!completion.data) {
-        console.log("No data returned from GPT");
-        return "No answer";
+        console.log('No data returned from GPT');
+        return 'No answer';
       }
       const answers: string[] = completion.data.choices.map(
         (choice: CreateChatCompletionResponseChoicesInner) => {
           return choice.message?.content;
         }
       );
-      return answers.join("\n");
+      return answers.join('\n');
     } catch (err: any) {
       console.log({
         message: err.message,
         stack: err.stack,
       });
-      return "No answer";
+      return 'No answer';
     }
   }
 
@@ -59,13 +59,13 @@ export class ChatGPTClient {
       const answers: string[] = completion.data.choices.map((choice: any) => {
         return choice.text;
       });
-      return answers.join("\n");
+      return answers.join('\n');
     } catch (err: any) {
       console.log({
         message: err.message,
         stack: err.stack,
       });
-      return "No answer";
+      return 'No answer';
     }
   }
 }
